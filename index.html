@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IP Logger Test</title>
+</head>
+<body>
+  <h1>Welcome to My Test Page</h1>
+  <p>Your visit has been logged.</p>
+
+  <script>
+    // Replace this URL with your actual webhook.site URL
+    const webhookURL = "https://webhook.site/9e3917a0-e7c1-46b3-9676-2dbd6e7480db";
+
+    fetch(webhookURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "New visitor!",
+        userAgent: navigator.userAgent,
+        timestamp: new Date().toISOString()
+      })
+    }).catch(error => {
+      console.error("Logging failed:", error);
+    });
+  </script>
+</body>
+</html>
+
+
